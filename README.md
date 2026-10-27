@@ -3,6 +3,8 @@
 An interactive portfolio site for a completed University of Waterloo CS452/652
 real-time railway-control project.
 
+**Live showcase:** https://y68wu.github.io/cs452-railway-control-showcase/
+
 This repository is the **presentation layer only**. It contains:
 
 - an original responsive project narrative;
