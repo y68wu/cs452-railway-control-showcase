@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">Original Track B topology redraw</title>
+  <desc id="desc">A not-to-scale original redraw of the University of Waterloo CS452 Track B topology, showing its two loop fields, central special-turnout interlock, staging tracks, forty sensor pairs, and twenty-two turnout positions.</desc>
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#171a1b" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
+    <style>
+      .bed{fill:none;stroke:#111516;stroke-opacity:.08;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}
+      .rail{fill:none;stroke:#171a1b;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+      .secondary{stroke:#68706d;stroke-width:2.2}
+      .cross{stroke:#ff5b3b;stroke-width:2.4}
+      .sensor-label{font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#303635;paint-order:stroke;stroke:#e9e7de;stroke-width:5;stroke-linejoin:round}
+      .turnout text{font:800 9px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#f8f7f1}
+      .turnout circle{fill:#171a1b;stroke:#ff5b3b;stroke-width:2}
+      .special text{font:800 10px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#171a1b}
+      .special circle{fill:#ff5b3b;stroke:#f8f7f1;stroke-width:3}
+      .eyebrow{font:800 12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:2.4px;fill:#646b68}
+      .heading{font:700 40px Helvetica,Arial,sans-serif;letter-spacing:-1.5px;fill:#111516}
+      .note{font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:1px;fill:#6d7471}
+    </style>
+  </defs>
+  <rect width="1400" height="820" fill="#e9e7de"/>
+  <rect width="1400" height="820" fill="url(#grid)"/>
+  <text class="eyebrow" x="54" y="45">TRACK B / ORIGINAL TOPOLOGY REDRAW</text>
+  <text class="heading" x="54" y="84">Two loop fields. One central interlock.</text>
+  <text class="note" x="1346" y="45" text-anchor="end">SCHEMATIC · NOT TO SCALE</text>
+
+  <g transform="translate(72 78)">
+    <g>
+      <path class="bed" d="M42 66H785C945 66 1105 116 1110 300M42 108H755C920 108 1062 145 1072 282"/>
+      <path class="rail secondary" d="M42 66H785C945 66 1105 116 1110 300M42 108H755C920 108 1062 145 1072 282"/>
+      <path class="bed" d="M42 594H1060C1110 594 1132 548 1132 494M42 636H1128M42 674H1148"/>
+      <path class="rail secondary" d="M42 594H1060C1110 594 1132 548 1132 494M42 636H1128M42 674H1148"/>
+      <path class="bed" d="M248 108C280 108 300 82 338 66M235 594C278 594 294 618 336 636M310 594C360 594 376 650 425 674M515 594C555 610 568 626 602 636M710 594C748 610 760 628 790 636M790 636C825 652 835 666 875 674"/>
+      <path class="rail secondary" d="M248 108C280 108 300 82 338 66M235 594C278 594 294 618 336 636M310 594C360 594 376 650 425 674M515 594C555 610 568 626 602 636M710 594C748 610 760 628 790 636M790 636C825 652 835 666 875 674"/>
+    </g>
+
+    <path class="bed" d="M338 66C205 72 118 170 118 345C118 526 224 594 395 594C560 612 730 594 850 594C1022 594 1110 514 1110 345C1110 175 970 96 755 108C600 115 475 80 338 66Z"/>
+    <path class="rail" d="M338 66C205 72 118 170 118 345C118 526 224 594 395 594C560 612 730 594 850 594C1022 594 1110 514 1110 345C1110 175 970 96 755 108C600 115 475 80 338 66Z"/>
+
+    <path class="bed" d="M600 350C570 225 500 135 385 135C245 135 175 225 175 350C175 490 265 545 410 545C520 545 575 470 600 350Z"/>
+    <path class="rail" d="M600 350C570 225 500 135 385 135C245 135 175 225 175 350C175 490 265 545 410 545C520 545 575 470 600 350Z"/>
+    <path class="bed" d="M600 350C625 225 695 135 835 135C980 135 1060 225 1060 350C1060 490 975 545 835 545C700 545 630 475 600 350Z"/>
+    <path class="rail" d="M600 350C625 225 695 135 835 135C980 135 1060 225 1060 350C1060 490 975 545 835 545C700 545 630 475 600 350Z"/>
+
+    <path class="bed" d="M600 194V506M572 270C620 305 580 395 628 430M628 270C580 305 620 395 572 430"/>
+    <path class="rail cross" d="M600 194V506M572 270C620 305 580 395 628 430M628 270C580 305 620 395 572 430"/>
+
+    <g class="special">
+      <g transform="translate(574 290)"><circle r="8"/><text x="-13" y="-13" text-anchor="end">SW156 · 0x9C</text></g>
+      <g transform="translate(626 290)"><circle r="8"/><text x="13" y="-13">SW155 · 0x9B</text></g>
+      <g transform="translate(574 410)"><circle r="8"/><text x="-13" y="22" text-anchor="end">SW153 · 0x99</text></g>
+      <g transform="translate(626 410)"><circle r="8"/><text x="13" y="22">SW154 · 0x9A</text></g>
+    </g>
+
+    <g class="turnout">
+      <g transform="translate(220 594)"><circle r="10"/><text text-anchor="middle" y="3">1</text></g>
+      <g transform="translate(332 636)"><circle r="10"/><text text-anchor="middle" y="3">2</text></g>
+      <g transform="translate(425 674)"><circle r="10"/><text text-anchor="middle" y="3">3</text></g>
+      <g transform="translate(248 108)"><circle r="10"/><text text-anchor="middle" y="3">4</text></g>
+      <g transform="translate(875 674)"><circle r="10"/><text text-anchor="middle" y="3">5</text></g>
+      <g transform="translate(600 636)"><circle r="10"/><text text-anchor="middle" y="3">6</text></g>
+      <g transform="translate(960 636)"><circle r="10"/><text text-anchor="middle" y="3">7</text></g>
+      <g transform="translate(1072 470)"><circle r="10"/><text text-anchor="middle" y="3">8</text></g>
+      <g transform="translate(1072 280)"><circle r="10"/><text text-anchor="middle" y="3">9</text></g>
+      <g transform="translate(760 135)"><circle r="10"/><text text-anchor="middle" y="3">10</text></g>
+      <g transform="translate(406 66)"><circle r="10"/><text text-anchor="middle" y="3">11</text></g>
+      <g transform="translate(338 66)"><circle r="10"/><text text-anchor="middle" y="3">12</text></g>
+      <g transform="translate(515 135)"><circle r="10"/><text text-anchor="middle" y="3">13</text></g>
+      <g transform="translate(300 155)"><circle r="10"/><text text-anchor="middle" y="3">14</text></g>
+      <g transform="translate(285 545)"><circle r="10"/><text text-anchor="middle" y="3">15</text></g>
+      <g transform="translate(492 545)"><circle r="10"/><text text-anchor="middle" y="3">16</text></g>
+      <g transform="translate(855 545)"><circle r="10"/><text text-anchor="middle" y="3">17</text></g>
+      <g transform="translate(790 674)"><circle r="10"/><text text-anchor="middle" y="3">18</text></g>
+    </g>
+
+    <g aria-label="Forty physical sensor pairs">
+      <text class="sensor-label" x="300" y="52">A1/A2</text>
+      <text class="sensor-label" x="280" y="165">A3/A4</text>
+      <text class="sensor-label" x="390" y="690">A5/A6</text>
+      <text class="sensor-label" x="278" y="650">A7/A8</text>
+      <text class="sensor-label" x="180" y="580">A9/A10</text>
+      <text class="sensor-label" x="138" y="520">A11/A12</text>
+      <text class="sensor-label" x="205" y="98">A13/A14</text>
+      <text class="sensor-label" x="146" y="185">A15/A16</text>
+
+      <text class="sensor-label" x="528" y="580">B1/B2</text>
+      <text class="sensor-label" x="532" y="478">B3/B4</text>
+      <text class="sensor-label" x="540" y="122">B5/B6</text>
+      <text class="sensor-label" x="82" y="580">B7/B8</text>
+      <text class="sensor-label" x="82" y="668">B9/B10</text>
+      <text class="sensor-label" x="82" y="626">B11/B12</text>
+      <text class="sensor-label" x="650" y="470">B13/B14</text>
+      <text class="sensor-label" x="202" y="472">B15/B16</text>
+
+      <text class="sensor-label" x="548" y="444">C1/C2</text>
+      <text class="sensor-label" x="1000" y="690">C3/C4</text>
+      <text class="sensor-label" x="438" y="626">C5/C6</text>
+      <text class="sensor-label" x="668" y="690">C7/C8</text>
+      <text class="sensor-label" x="410" y="530">C9/C10</text>
+      <text class="sensor-label" x="410" y="125">C11/C12</text>
+      <text class="sensor-label" x="455" y="52">C13/C14</text>
+      <text class="sensor-label" x="690" y="626">C15/C16</text>
+
+      <text class="sensor-label" x="652" y="252">D1/D2</text>
+      <text class="sensor-label" x="770" y="120">D3/D4</text>
+      <text class="sensor-label" x="1018" y="275">D5/D6</text>
+      <text class="sensor-label" x="1060" y="190">D7/D8</text>
+      <text class="sensor-label" x="1050" y="500">D9/D10</text>
+      <text class="sensor-label" x="905" y="626">D11/D12</text>
+      <text class="sensor-label" x="905" y="580">D13/D14</text>
+      <text class="sensor-label" x="688" y="500">D15/D16</text>
+
+      <text class="sensor-label" x="532" y="250">E1/E2</text>
+      <text class="sensor-label" x="700" y="170">E3/E4</text>
+      <text class="sensor-label" x="865" y="122">E5/E6</text>
+      <text class="sensor-label" x="925" y="53">E7/E8</text>
+      <text class="sensor-label" x="970" y="520">E9/E10</text>
+      <text class="sensor-label" x="1015" y="626">E11/E12</text>
+      <text class="sensor-label" x="980" y="580">E13/E14</text>
+      <text class="sensor-label" x="510" y="170">E15/E16</text>
+    </g>
+  </g>
+
+  <text class="note" x="54" y="798">40 PHYSICAL SENSOR PAIRS · 80 DIRECTIONAL NODES</text>
+  <text class="note" x="510" y="798">TURNOUTS 1–18 + 153–156</text>
+  <text class="note" x="1346" y="798" text-anchor="end">GEOMETRY REDRAWN FOR EXPLANATION · OFFICIAL DATA LINKED BELOW</text>
+</svg>
