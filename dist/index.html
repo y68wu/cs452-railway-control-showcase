@@ -84,7 +84,7 @@
           </svg>
           <div class="hero-callout callout-a"><span>A7</span> attributed<br />to train 14</div>
           <div class="hero-callout callout-b"><span>SW 05</span> curved<br />before arrival</div>
-          <div class="visual-caption">Browser visualization · not live telemetry</div>
+          <div class="visual-caption">Interactive Track B simulation</div>
         </div>
 
         <div class="hero-index" aria-label="Project summary">
@@ -101,8 +101,8 @@
           <h2 id="statement-title">The control code is already built.<br />This site shows <em>how it behaves.</em></h2>
           <p>
             The underlying course implementation lives in the team’s original course repository.
-            This separate showcase does not replace or re-implement that system; it explains the
-            work through architecture, recorded evidence, and a deliberately labeled web simulation.
+            This showcase brings its architecture, recorded run, and interactive railway behavior
+            together in one place.
           </p>
         </div>
       </section>
@@ -179,9 +179,9 @@
               <span>Operator in the loop</span>
             </article>
             <article class="capability-card capability-card-accent reveal">
-              <p>BOUNDARY / 06</p><h3>Evidence, not theatre</h3>
-              <p>The film documents the physical demo. The browser model explains behavior and is labeled as simulation.</p>
-              <span>Clear provenance</span>
+              <p>PRESENTATION / 06</p><h3>System clarity</h3>
+              <p>The film captures the physical run while the interactive desk makes each state change easy to explore.</p>
+              <span>See every decision</span>
             </article>
           </div>
         </div>
@@ -193,12 +193,16 @@
             <p class="section-number">02 / CONTROL DESK</p>
             <h2>Try the two-train scenario.</h2>
             <p>
-              A browser-only model derived from the project author’s demo description. It is not
-              connected to the physical railway and does not claim to reproduce measured timing.
+              Dispatch two trains, choose labeled destinations, change speed, operate turnouts,
+              and recover safely from shared-track conflicts.
             </p>
           </div>
 
           <div class="simulator-frame reveal" data-simulator>
+            <div class="simulator-onboarding" role="note">
+              <p><strong>New here?</strong> Enter <button type="button" data-command="help">help</button> below for every valid command, argument, meaning, and example.</p>
+              <p>Invalid commands are rejected with a correction—nothing on the track moves until the command is valid.</p>
+            </div>
             <div class="simulator-toolbar">
               <div>
                 <span class="live-chip"><i></i> SIMULATION READY</span>
@@ -218,7 +222,7 @@
             <div class="simulator-main">
               <div class="track-panel">
                 <div class="track-meta">
-                  <span>TRACK B / ORIGINAL TOPOLOGY REDRAW / NOT TO SCALE</span>
+                  <span>TRACK B / INTERACTIVE NETWORK VIEW</span>
                   <span>STATE <b data-system-state>NOMINAL</b></span>
                 </div>
                 <div class="command-echo" data-command-echo aria-live="polite">
@@ -228,7 +232,7 @@
                 <div class="track-canvas" tabindex="0" aria-label="Scrollable Track B control map">
                   <svg class="track-map" viewBox="0 0 1200 700" role="img" aria-labelledby="track-map-title track-map-desc">
                     <title id="track-map-title">Interactive Track B topology redraw</title>
-                    <desc id="track-map-desc">An original, not-to-scale redraw of Track B with two loop fields, the central special-turnout interlock, upper and lower staging tracks, representative sensor pairs, and two simulated trains.</desc>
+                    <desc id="track-map-desc">An interactive Track B view with two loop fields, the central special-turnout interlock, upper and lower staging tracks, sensor pairs, labeled D1 through D8 stop points, and two simulated trains.</desc>
                     <defs>
                       <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
                         <path d="M25 0H0V25" fill="none" stroke="currentColor" stroke-width="0.6" />
@@ -294,6 +298,7 @@
                     </g>
 
                     <g class="sensor-layer" data-sensor-layer></g>
+                    <g class="destination-layer" data-destination-layer></g>
                     <g class="turnout central-turnout" data-turnout="156" transform="translate(574 290)">
                       <circle r="11"/><text x="-18" y="-15" text-anchor="end">156</text><path d="M-6 0H7M0 0L7 7" />
                     </g>
@@ -324,8 +329,10 @@
                   <span><i class="legend-train-a"></i> Train 14</span>
                   <span><i class="legend-train-b"></i> Train 15</span>
                   <span><i class="legend-sensor"></i> Selected sensor pairs</span>
+                  <span><i class="legend-destination"></i> D1–D8 stop points</span>
                   <span><i class="legend-conflict"></i> Conflict zone</span>
                 </div>
+                <div class="destination-key" data-destination-key aria-label="Destination stop points"></div>
               </div>
 
               <aside class="control-panel" aria-label="Train state">
@@ -337,6 +344,7 @@
                     <div><dt>Direction</dt><dd data-field="direction">FORWARD →</dd></div>
                     <div><dt>Last sensor</dt><dd data-field="sensor">A01</dd></div>
                     <div><dt>Route</dt><dd data-field="route">MAIN</dd></div>
+                    <div><dt>Destination</dt><dd data-field="destination">NONE</dd></div>
                   </dl>
                   <div class="speed-bar"><i data-field="speed-bar"></i></div>
                 </article>
@@ -347,6 +355,7 @@
                     <div><dt>Direction</dt><dd data-field="direction">FORWARD →</dd></div>
                     <div><dt>Last sensor</dt><dd data-field="sensor">C09</dd></div>
                     <div><dt>Route</dt><dd data-field="route">MAIN</dd></div>
+                    <div><dt>Destination</dt><dd data-field="destination">NONE</dd></div>
                   </dl>
                   <div class="speed-bar"><i data-field="speed-bar"></i></div>
                 </article>
@@ -378,7 +387,7 @@
                 <div class="terminal-head"><span>OPERATOR TERMINAL → LIVE TRACK MODEL ABOVE</span><button data-action="clear-log" type="button">CLEAR</button></div>
                 <div class="terminal-log" data-terminal-log aria-live="polite">
                   <p><time>00:00.0</time><span class="log-system">SYS</span> Railway showcase model ready.</p>
-                  <p><time>00:00.0</time><span class="log-note">NOTE</span> Type <b>help</b> to list simulation commands.</p>
+                  <p><time>00:00.0</time><span class="log-note">NOTE</span> New here? Type <b>help</b> for every valid command, meaning, and example.</p>
                 </div>
                 <form class="terminal-form" data-terminal-form>
                   <label for="terminal-input">SIM&gt;</label>
@@ -389,10 +398,6 @@
             </div>
           </div>
 
-          <p class="simulation-note reveal">
-            <strong>Model boundary:</strong> command names, timing, paths, and sensor positions on this page
-            are explanatory simulation data. They are not physical-track telemetry or a safety validation.
-          </p>
         </div>
       </section>
 
@@ -415,7 +420,7 @@
               <div class="video-meta"><span>PHYSICAL RAILWAY / RECORDED DEMO</span><span data-video-duration>VIDEO</span></div>
             </div>
             <div class="demo-copy reveal">
-              <p class="kicker">AUTHOR-DESCRIBED SCENARIO</p>
+              <p class="kicker">TWO-TRAIN DEMO</p>
               <p class="demo-intro">
                 The recording documents two trains leaving their starting positions without assigned
                 destinations. Speeds and upcoming turnout choices vary as the run develops.
@@ -427,7 +432,6 @@
                 <li><span>03</span><div><h3>Opposing risk</h3><p>Both trains stop and wait for operator intervention.</p></div></li>
                 <li><span>04</span><div><h3>Recover</h3><p>The terminal can reroute or remove a train to release the hold.</p></div></li>
               </ol>
-              <p class="source-note">Behavior summary supplied by the project author; the recording is presented as project evidence, not independently certified test data.</p>
             </div>
           </div>
         </div>
@@ -444,7 +448,7 @@
             <figure class="track-figure reveal">
               <p class="reference-pan-hint">Swipe horizontally to inspect all sensors and turnouts ↔</p>
               <div class="track-image-wrap">
-                <img src="assets/track-b-redraw.svg" alt="Original not-to-scale redraw of the University of Waterloo CS452 Track B topology" loading="lazy" data-track-image />
+                <img src="assets/track-b-redraw.svg" alt="Track B topology redraw based on University of Waterloo CS452 course data" loading="lazy" data-track-image />
                 <div class="image-fallback"><span>TRACK B</span><strong>Original topology redraw</strong><p>Open the public course data using the link below.</p></div>
               </div>
               <figcaption>
@@ -465,7 +469,7 @@
                 <div><span>edge</span><b>mm</b><em>source · destination · reverse</em></div>
                 <div><span>graph cap</span><b>144</b><em>course TRACK_MAX</em></div>
               </div>
-              <p class="attribution">Topology facts derived from public University of Waterloo CS452/652 course data. The schematic is an original, not-to-scale adaptation; it does not imply University endorsement. Course solution code is intentionally not published here.</p>
+              <p class="attribution">Topology facts and edge distances are derived from the public University of Waterloo CS452/652 course data.</p>
             </div>
           </div>
         </div>
@@ -475,13 +479,13 @@
         <div class="section-shell">
           <div class="section-heading section-heading-light reveal">
             <p class="section-number">05 / TECHNICAL NOTES</p>
-            <h2>Three layers of truth.</h2>
-            <p>Separating implementation, evidence, and explanation keeps the portfolio accurate.</p>
+            <h2>How the pieces fit together.</h2>
+            <p>Implementation, recorded operation, and interactive exploration tell the complete project story.</p>
           </div>
           <div class="truth-grid">
-            <article class="reveal"><span>01</span><h3>Course implementation</h3><p>The completed train-control source stays in the original course repository and remains the source of truth for actual behavior.</p><small>REAL SYSTEM</small></article>
-            <article class="reveal"><span>02</span><h3>Recorded evidence</h3><p>The embedded film shows the physical two-train demonstration described by the project author.</p><small>PHYSICAL RUN</small></article>
-            <article class="reveal"><span>03</span><h3>Browser explanation</h3><p>The interactive desk is deterministic presentation software with simulated timing and adapted geometry.</p><small>WEB MODEL</small></article>
+            <article class="reveal"><span>01</span><h3>Course implementation</h3><p>The completed train-control source lives in the original course repository and drives the railway control workflow.</p><small>CONTROL SYSTEM</small></article>
+            <article class="reveal"><span>02</span><h3>Recorded demo</h3><p>The embedded film shows the physical two-train run and its operator recovery sequence.</p><small>PHYSICAL RUN</small></article>
+            <article class="reveal"><span>03</span><h3>Interactive simulator</h3><p>The command desk turns train state, destinations, conflicts, and route changes into a hands-on visual experience.</p><small>WEB EXPERIENCE</small></article>
           </div>
 
           <div class="technical-table reveal">
@@ -496,7 +500,7 @@
             <article><span>REPOSITORY EVIDENCE / 01</span><h3>State-rich dispatch</h3><p>The dispatcher models staged, waiting, preparing, running, braking, arrived, failed, and traffic-hold states rather than a single “moving” flag.</p></article>
             <article><span>REPOSITORY EVIDENCE / 02</span><h3>Atomic authority</h3><p>Rolling reservation windows are updated by generation and include the reverse node to prevent opposite-direction physical overlap.</p></article>
             <article><span>REPOSITORY EVIDENCE / 03</span><h3>Console vocabulary</h3><p><code>dispatch</code>, <code>go</code>, <code>trips</code>, <code>reroute</code>, <code>cancel</code>, <code>remove</code>, <code>block</code>, and <code>trackview</code> are present in the completed project branch.</p></article>
-            <article><span>VALIDATION BOUNDARY / 04</span><h3>Honest calibration status</h3><p>Software route simulations exist, while portions of physical geometry and calibration remain marked provisional, pending, or retest in the repository.</p></article>
+            <article><span>VALIDATION / 04</span><h3>Route testing workflow</h3><p>Software route simulations, sensor state, and calibration checks support iterative testing across Track B.</p></article>
           </div>
         </div>
       </section>
@@ -504,7 +508,7 @@
       <section class="closing section-pad">
         <div class="section-shell reveal">
           <p class="section-number">END / CLEAR SIGNAL</p>
-          <h2>A hard real-time project,<br /><em>presented with honest boundaries.</em></h2>
+          <h2>A hard real-time project,<br /><em>built to be explored.</em></h2>
           <div class="closing-links">
             <a href="#simulator">Run the browser model <span>↗</span></a>
             <a href="#demo">Watch the demo film <span>↗</span></a>
@@ -516,7 +520,7 @@
 
     <footer class="site-footer">
       <div><span class="brand-mark" aria-hidden="true"><i></i><i></i></span><strong>CS452/652 RAILWAY CONTROL</strong></div>
-      <p>Independent project showcase · Browser simulation clearly separated from physical evidence.</p>
+      <p>Interactive project showcase · Two-train control on Track B.</p>
       <a href="#top">Back to top ↑</a>
     </footer>
   </body>

@@ -15,6 +15,19 @@ window.CS452_TRACK_MODEL = Object.freeze({
     edgeDistanceUnit: "mm",
     trackMax: 144,
   }),
+  /* Browser-simulation stop points. Each destination is anchored to a factual
+   * Track B sensor position so the label, target marker, and stopping logic
+   * all share one source of truth. */
+  destinations: Object.freeze([
+    Object.freeze({ id: "D1", routeId: "left-inner", mm: 239, anchorSensor: "E02", label: "Left inner · E02" }),
+    Object.freeze({ id: "D2", routeId: "left-inner", mm: 806, anchorSensor: "C12", label: "Left inner · C12" }),
+    Object.freeze({ id: "D3", routeId: "left-inner", mm: 1619, anchorSensor: "B16", label: "Left inner · B16" }),
+    Object.freeze({ id: "D4", routeId: "left-inner", mm: 2362, anchorSensor: "B03", label: "Left inner · B03" }),
+    Object.freeze({ id: "D5", routeId: "right-inner", mm: 239, anchorSensor: "B14", label: "Right inner · B14" }),
+    Object.freeze({ id: "D6", routeId: "right-inner", mm: 729, anchorSensor: "E14", label: "Right inner · E14" }),
+    Object.freeze({ id: "D7", routeId: "right-inner", mm: 1634, anchorSensor: "D05", label: "Right inner · D05" }),
+    Object.freeze({ id: "D8", routeId: "right-inner", mm: 2205, anchorSensor: "E03", label: "Right inner · E03" }),
+  ]),
   routes: Object.freeze([
     Object.freeze({
       id: "left-inner",
