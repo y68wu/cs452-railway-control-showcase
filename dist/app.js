@@ -316,6 +316,18 @@
     return `${String(minutes).padStart(2, "0")}:${seconds.toFixed(1).padStart(4, "0")}`;
   }
 
+  function appendLogRow(row, latestText) {
+    terminalLog.append(row);
+    terminalLog.scrollTop = terminalLog.scrollHeight;
+    latestEventElement.textContent = latestText;
+
+    while (terminalLog.children.length > 40) {
+      terminalLog.firstElementChild.remove();
+    }
+
+    return row;
+  }
+
   function log(message, type = "system", label) {
     const row = document.createElement("p");
     const time = document.createElement("time");
@@ -333,13 +345,35 @@
     tag.textContent = label || labels[type] || "SYS";
     text.textContent = message;
     row.append(time, tag, text);
-    terminalLog.append(row);
-    terminalLog.scrollTop = terminalLog.scrollHeight;
-    latestEventElement.textContent = message;
+    return appendLogRow(row, message);
+  }
 
-    while (terminalLog.children.length > 40) {
-      terminalLog.firstElementChild.remove();
-    }
+  function logHelp(syntax, meaning, example, label = "HELP") {
+    const row = document.createElement("p");
+    const time = document.createElement("time");
+    const tag = document.createElement("span");
+    const body = document.createElement("span");
+    const command = document.createElement("strong");
+    const description = document.createElement("span");
+    const exampleLine = document.createElement("span");
+    const exampleLabel = document.createElement("b");
+
+    row.className = "terminal-help-row";
+    time.textContent = timeString();
+    tag.className = "log-note";
+    tag.textContent = label;
+    body.className = "terminal-help-body";
+    command.className = "terminal-help-command";
+    command.textContent = syntax;
+    description.className = "terminal-help-meaning";
+    description.textContent = meaning;
+    exampleLine.className = "terminal-help-example";
+    exampleLabel.textContent = "EXAMPLE";
+    exampleLine.append(exampleLabel, document.createTextNode(`  ${example}`));
+    body.append(command, description, exampleLine);
+    row.append(time, tag, body);
+
+    return appendLogRow(row, `${syntax} — ${meaning}`);
   }
 
   function setSystemState(label, alert = false) {
@@ -962,22 +996,39 @@
   function showHelp(topic) {
     topic = ({ run: "go", start: "go" })[topic] || topic;
     if (topic === "destinations") {
+      const introRow = log("DESTINATIONS — each bold D-number is a real stop pin on the map above.", "system", "GUIDE");
       Object.values(destinations).forEach((destination) => {
-        log(`${destination.id}: ${destination.label}; the train stops at the labeled map pin.`, "note", "DEST");
+        logHelp(
+          destination.id,
+          `${destination.label} — the train stops at this labeled map pin.`,
+          `dispatch 14 CURRENT 80 ${destination.id.toLowerCase()}`,
+          "DEST"
+        );
+      });
+      requestAnimationFrame(() => {
+        terminalLog.scrollTop = Math.max(0, introRow.offsetTop - terminalLog.offsetTop - 8);
       });
       return true;
     }
     if (topic) {
       const entry = helpEntries[topic];
       if (!entry) return false;
-      log(`${entry[0]} — ${entry[1]} Example: ${entry[2]}`, "note", "HELP");
+      log("FOCUSED HELP — bold text is the exact command syntax.", "system", "GUIDE");
+      logHelp(entry[0], entry[1], entry[2]);
       return true;
     }
-    log("Accepted commands (type help <command> for a focused explanation):", "note", "HELP");
+    const introRow = log(
+      `${Object.keys(helpEntries).length} AVAILABLE COMMANDS — bold text is the syntax. Replace values inside <…>; do not type the brackets.`,
+      "system",
+      "GUIDE"
+    );
     Object.values(helpEntries).forEach(([syntax, meaning, example]) => {
-      log(`${syntax} — ${meaning} Example: ${example}`, "note", "HELP");
+      logHelp(syntax, meaning, example);
     });
-    log("Type help destinations to list every labeled stop point.", "note", "HELP");
+    log("Need a stop? Type help destinations. Need one command? Type help <command>.", "note", "NEXT");
+    requestAnimationFrame(() => {
+      terminalLog.scrollTop = Math.max(0, introRow.offsetTop - terminalLog.offsetTop - 8);
+    });
     return true;
   }
 

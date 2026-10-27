@@ -490,91 +490,210 @@
 
   .hero-visual > svg {
     position: absolute;
-    inset: 9% 2% 7%;
-    width: 96%;
-    height: 84%;
+    inset: 7% 1% 13%;
+    width: 98%;
+    height: 80%;
   }
 
-  .hero-rail {
+  .hero-track-bed {
     fill: none;
-    stroke: rgba(255, 255, 255, 0.85);
-    stroke-width: 3;
+    stroke: rgba(255, 255, 255, 0.11);
+    stroke-width: 16;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
-  .hero-rail-shadow {
-    stroke: rgba(255, 255, 255, 0.12);
-    stroke-width: 18;
+  .hero-track-line {
+    fill: none;
+    stroke: rgba(247, 246, 240, 0.92);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
-  .hero-rail-muted {
-    stroke: rgba(255, 255, 255, 0.35);
+  .hero-track-secondary {
+    stroke: rgba(247, 246, 240, 0.48);
+  }
+
+  .hero-track-muted {
+    stroke: rgba(247, 246, 240, 0.28);
+  }
+
+  .hero-staging {
+    opacity: 0.68;
+  }
+
+  .hero-interlock-line {
+    stroke: rgba(196, 255, 46, 0.76);
+    stroke-width: 2;
+  }
+
+  .hero-conflict-halo,
+  .hero-conflict-core {
+    fill: rgba(196, 255, 46, 0.035);
+    stroke: rgba(196, 255, 46, 0.26);
+    stroke-width: 1;
+  }
+
+  .hero-conflict-halo {
+    animation: heroInterlockPulse 2.2s ease-in-out infinite;
+  }
+
+  .hero-conflict-core {
+    stroke-dasharray: 3 4;
+  }
+
+  .hero-interlock-label,
+  .hero-switch-label,
+  .hero-sensors text {
+    fill: #9ca49f;
+    font-family: var(--mono);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-interlock-label {
+    fill: var(--signal);
+    font-size: 7px;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-switch-label {
+    fill: #737b77;
+  }
+
+  @keyframes heroInterlockPulse {
+    50% {
+      fill: rgba(196, 255, 46, 0.1);
+      stroke: rgba(196, 255, 46, 0.65);
+      transform: scale(1.08);
+      transform-origin: 360px 260px;
+    }
   }
 
   .hero-sensors circle {
     fill: var(--sky);
     stroke: #0d1113;
-    stroke-width: 4;
+    stroke-width: 3;
   }
 
-  .hero-train rect {
+  .hero-mini-train {
+    filter: drop-shadow(0 5px 4px rgba(0, 0, 0, 0.42));
+  }
+
+  .hero-mini-train rect {
     fill: var(--coral);
   }
 
-  .hero-train circle {
+  .hero-mini-train > circle:not(.hero-train-halo) {
     fill: #07090a;
   }
 
-  .hero-train text {
+  .hero-mini-train text {
     fill: #07090a;
     font-family: var(--mono);
     font-size: 10px;
     font-weight: 800;
   }
 
-  .hero-train-b rect {
+  .hero-mini-train .hero-train-halo {
+    fill: none;
+    stroke: rgba(255, 91, 64, 0.42);
+    stroke-width: 1;
+  }
+
+  .hero-mini-train.hero-train-b rect {
     fill: var(--sky);
   }
 
-  .hero-train-a {
-    animation: heroFloatA 4s ease-in-out infinite;
+  .hero-mini-train.hero-train-b .hero-train-halo {
+    stroke: rgba(87, 194, 255, 0.68);
+    animation: heroHoldPulse 1.6s ease-in-out infinite;
   }
 
-  .hero-train-b {
-    animation: heroFloatB 5s ease-in-out infinite;
+  .hero-mini-train.hero-train-a {
+    animation: heroTrainCircuit 12s linear infinite;
   }
 
-  @keyframes heroFloatA {
-    50% { transform: translate(370px, 158px); }
+  .hero-mini-train.hero-train-b {
+    transform: translate(404px, 158px);
   }
 
-  @keyframes heroFloatB {
-    50% { transform: translate(455px, 264px); }
+  @keyframes heroTrainCircuit {
+    0% { transform: translate(224px, 414px) rotate(-12deg); }
+    15% { transform: translate(120px, 390px) rotate(26deg); }
+    30% { transform: translate(56px, 260px) rotate(90deg); }
+    45% { transform: translate(100px, 145px) rotate(140deg); }
+    60% { transform: translate(210px, 106px) rotate(180deg); }
+    75% { transform: translate(315px, 155px) rotate(222deg); }
+    87% { transform: translate(360px, 260px) rotate(270deg); }
+    95% { transform: translate(315px, 360px) rotate(318deg); }
+    100% { transform: translate(224px, 414px) rotate(348deg); }
   }
 
-  .hero-callout {
+  @keyframes heroHoldPulse {
+    50% {
+      opacity: 0.35;
+      transform: scale(1.28);
+    }
+  }
+
+  .hero-fleet-strip {
     position: absolute;
-    padding-left: 12px;
-    color: #a8adaa;
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    right: 22px;
+    bottom: 52px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
     font-family: var(--mono);
-    font-size: 9px;
-    line-height: 1.5;
-    letter-spacing: 0.08em;
+    font-size: 8px;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
-  .hero-callout span {
+  .hero-fleet-strip span {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    padding: 6px 8px;
+    color: #9ba29e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(6, 9, 10, 0.78);
+  }
+
+  .hero-fleet-strip b {
     color: var(--paper-bright);
   }
 
-  .callout-a {
-    top: 30%;
-    left: 47%;
+  .hero-fleet-strip i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
   }
 
-  .callout-b {
-    right: 10%;
-    bottom: 23%;
+  .hero-fleet-a { background: var(--coral); }
+  .hero-fleet-b { background: var(--sky); }
+
+  .hero-interaction-note {
+    position: absolute;
+    bottom: 50px;
+    left: 22px;
+    display: grid;
+    gap: 3px;
+    padding-left: 10px;
+    color: #858d89;
+    border-left: 2px solid var(--signal);
+    font-family: var(--mono);
+    font-size: 8px;
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-interaction-note strong {
+    color: var(--signal);
+    font-size: 8px;
+    letter-spacing: 0.08em;
   }
 
   .visual-caption {
@@ -1649,6 +1768,50 @@
     font-weight: 800;
   }
 
+  .terminal-help-row {
+    margin-block: 4px;
+    padding: 8px 9px;
+    border-left: 2px solid var(--signal);
+    background: rgba(196, 255, 46, 0.055);
+  }
+
+  .terminal-log .terminal-help-body {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+    font-weight: 500;
+  }
+
+  .terminal-log .terminal-help-command {
+    display: block;
+    color: var(--signal);
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: 0.015em;
+    overflow-wrap: anywhere;
+  }
+
+  .terminal-log .terminal-help-meaning {
+    color: #e3e7e4;
+    font-weight: 650;
+    line-height: 1.45;
+  }
+
+  .terminal-log .terminal-help-example {
+    color: #8e9994;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .terminal-log .terminal-help-example b {
+    color: var(--paper-bright);
+    font-weight: 900;
+    letter-spacing: 0.06em;
+  }
+
   .log-system { color: var(--signal); }
   .log-note { color: var(--sky); }
   .log-alert { color: var(--coral); }
@@ -2569,6 +2732,23 @@
       display: none;
     }
 
+    .hero-interaction-note {
+      display: none;
+    }
+
+    .hero-fleet-strip {
+      right: 16px;
+      bottom: 49px;
+      left: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .visual-caption {
+      right: 16px;
+      bottom: 16px;
+    }
+
     .hero-index {
       grid-template-columns: 1fr;
       margin-top: -80px;
@@ -2692,6 +2872,10 @@
     .terminal-log p {
       grid-template-columns: 52px 44px 1fr;
       gap: 5px;
+    }
+
+    .terminal-help-row {
+      padding-inline: 6px;
     }
 
     .terminal-form button {

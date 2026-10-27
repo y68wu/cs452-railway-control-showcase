@@ -12,8 +12,8 @@
     <meta property="og:title" content="CS452/652 Railway Control Showcase" />
     <meta property="og:description" content="A completed real-time railway-control project, made visible through an interactive two-train control desk." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://cs452-railway-control-showcase.briskcrane16384.chatgpt.site" />
-    <meta property="og:image" content="https://cs452-railway-control-showcase.briskcrane16384.chatgpt.site/assets/demo-poster.png" />
+    <meta property="og:url" content="https://y68wu.github.io/cs452-railway-control-showcase/" />
+    <meta property="og:image" content="https://y68wu.github.io/cs452-railway-control-showcase/assets/demo-poster.png" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
     <script src="track-model.js" defer></script>
@@ -56,35 +56,72 @@
           </div>
         </div>
 
-        <div class="hero-visual reveal" aria-label="Abstract two-train railway control visualization">
+        <div class="hero-visual reveal" aria-label="Animated Track B miniature showing two trains sharing a protected interlock">
           <div class="visual-grid" aria-hidden="true"></div>
           <div class="hero-status">
-            <span>LIVE MODEL</span>
+            <span>TRACK B · LIVE MINIATURE</span>
             <span><i></i> 02 TRAINS</span>
           </div>
-          <svg viewBox="0 0 720 520" role="img" aria-labelledby="hero-track-title">
-            <title id="hero-track-title">Abstract railway line with two moving train markers</title>
-            <path class="hero-rail hero-rail-shadow" d="M64 338 C128 338 133 172 247 172 H503 C592 172 598 80 658 80" />
-            <path class="hero-rail" d="M64 338 C128 338 133 172 247 172 H503 C592 172 598 80 658 80" />
-            <path class="hero-rail hero-rail-shadow" d="M64 410 H223 C314 410 312 278 405 278 H658" />
-            <path class="hero-rail hero-rail-muted" d="M64 410 H223 C314 410 312 278 405 278 H658" />
-            <g class="hero-sensors">
-              <circle cx="128" cy="322" r="5"/><circle cx="247" cy="172" r="5"/>
-              <circle cx="405" cy="278" r="5"/><circle cx="536" cy="278" r="5"/>
-              <circle cx="598" cy="126" r="5"/><circle cx="223" cy="410" r="5"/>
+          <svg viewBox="0 0 720 520" role="img" aria-labelledby="hero-track-title hero-track-desc">
+            <title id="hero-track-title">Track B two-train interlock sample</title>
+            <desc id="hero-track-desc">A compact redraw of Track B with two loop fields, staging tracks, selected sensors, the central four-turnout interlock, train 14 circulating, and train 15 waiting before shared authority.</desc>
+
+            <g class="hero-staging" aria-hidden="true">
+              <path class="hero-track-bed" d="M26 70H454C575 70 678 120 680 258" />
+              <path class="hero-track-line hero-track-muted" d="M26 70H454C575 70 678 120 680 258" />
+              <path class="hero-track-bed" d="M26 98H438C558 98 646 138 650 248" />
+              <path class="hero-track-line hero-track-muted" d="M26 98H438C558 98 646 138 650 248" />
+              <path class="hero-track-bed" d="M26 444H650C676 444 688 418 688 384" />
+              <path class="hero-track-line hero-track-muted" d="M26 444H650C676 444 688 418 688 384" />
+              <path class="hero-track-bed" d="M26 474H690" />
+              <path class="hero-track-line hero-track-muted" d="M26 474H690" />
             </g>
-            <g class="hero-train hero-train-a" transform="translate(346 158)">
-              <rect width="63" height="28" rx="3"/><circle cx="14" cy="30" r="4"/><circle cx="49" cy="30" r="4"/>
-              <text x="31.5" y="19" text-anchor="middle">T14</text>
+
+            <g class="hero-track-network" aria-hidden="true">
+              <path class="hero-track-bed" d="M360 260C340 160 286 106 210 106C92 106 56 176 56 260C56 356 124 414 224 414C309 414 346 344 360 260Z" />
+              <path class="hero-track-line" d="M360 260C340 160 286 106 210 106C92 106 56 176 56 260C56 356 124 414 224 414C309 414 346 344 360 260Z" />
+              <path class="hero-track-bed" d="M360 260C380 160 434 106 510 106C628 106 664 176 664 260C664 356 596 414 496 414C411 414 374 344 360 260Z" />
+              <path class="hero-track-line" d="M360 260C380 160 434 106 510 106C628 106 664 176 664 260C664 356 596 414 496 414C411 414 374 344 360 260Z" />
+              <path class="hero-track-bed" d="M278 70H454C575 70 680 124 680 258C680 372 615 474 505 474H340C304 456 278 430 224 414C124 414 56 356 56 260C56 176 92 106 210 106C255 106 266 82 278 70Z" />
+              <path class="hero-track-line hero-track-secondary" d="M278 70H454C575 70 680 124 680 258C680 372 615 474 505 474H340C304 456 278 430 224 414C124 414 56 356 56 260C56 176 92 106 210 106C255 106 266 82 278 70Z" />
             </g>
-            <g class="hero-train hero-train-b" transform="translate(483 264)">
-              <rect width="63" height="28" rx="3"/><circle cx="14" cy="30" r="4"/><circle cx="49" cy="30" r="4"/>
-              <text x="31.5" y="19" text-anchor="middle">T15</text>
+
+            <g class="hero-interlock" aria-hidden="true">
+              <path class="hero-track-bed" d="M360 154V366M344 214C378 238 342 282 376 306M376 214C342 238 378 282 344 306" />
+              <path class="hero-track-line hero-interlock-line" d="M360 154V366M344 214C378 238 342 282 376 306M376 214C342 238 378 282 344 306" />
+              <circle class="hero-conflict-halo" cx="360" cy="260" r="39" />
+              <circle class="hero-conflict-core" cx="360" cy="260" r="27" />
+              <text class="hero-interlock-label" x="360" y="264" text-anchor="middle">INTERLOCK</text>
+              <text class="hero-switch-label" x="304" y="198">156</text><text class="hero-switch-label" x="397" y="198">155</text>
+              <text class="hero-switch-label" x="304" y="332">153</text><text class="hero-switch-label" x="397" y="332">154</text>
+            </g>
+
+            <g class="hero-sensors" aria-hidden="true">
+              <g transform="translate(112 153)"><circle r="5"/><text x="10" y="4">A15</text></g>
+              <g transform="translate(210 106)"><circle r="5"/><text x="10" y="-9">A3</text></g>
+              <g transform="translate(224 414)"><circle r="5"/><text x="10" y="19">C9</text></g>
+              <g transform="translate(496 414)"><circle r="5"/><text x="10" y="19">D13</text></g>
+              <g transform="translate(608 153)"><circle r="5"/><text x="-34" y="-9">E5</text></g>
+              <g transform="translate(650 248)"><circle r="5"/><text x="-31" y="-10">D5</text></g>
+              <g transform="translate(360 154)"><circle r="5"/><text x="10" y="4">E1</text></g>
+              <g transform="translate(360 366)"><circle r="5"/><text x="10" y="4">C1</text></g>
+            </g>
+
+            <g class="hero-mini-train hero-train-a" aria-label="Train 14 running around the left loop">
+              <circle class="hero-train-halo" r="25"/><rect x="-24" y="-12" width="48" height="24" rx="4"/>
+              <circle cx="-14" cy="14" r="3.5"/><circle cx="14" cy="14" r="3.5"/><text y="4" text-anchor="middle">14</text>
+            </g>
+            <g class="hero-mini-train hero-train-b" aria-label="Train 15 holding before the protected interlock">
+              <circle class="hero-train-halo" r="25"/><rect x="-24" y="-12" width="48" height="24" rx="4"/>
+              <circle cx="-14" cy="14" r="3.5"/><circle cx="14" cy="14" r="3.5"/><text y="4" text-anchor="middle">15</text>
             </g>
           </svg>
-          <div class="hero-callout callout-a"><span>A7</span> attributed<br />to train 14</div>
-          <div class="hero-callout callout-b"><span>SW 05</span> curved<br />before arrival</div>
-          <div class="visual-caption">Interactive Track B simulation</div>
+          <div class="hero-fleet-strip" aria-hidden="true">
+            <span><i class="hero-fleet-a"></i><b>T14</b> RUNNING</span>
+            <span><i class="hero-fleet-b"></i><b>T15</b> AUTHORITY HOLD</span>
+          </div>
+          <div class="hero-interaction-note"><strong>SHARED INTERLOCK PROTECTED</strong><span>T15 waits while T14 clears the reserved path.</span></div>
+          <div class="visual-caption">Live two-train sample · Track B topology</div>
         </div>
 
         <div class="hero-index" aria-label="Project summary">
